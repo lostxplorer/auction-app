@@ -13,7 +13,6 @@ const walletModel = require('./app/models/Wallets');
 const multer = require('multer');
 const inMemoryStorage = multer.memoryStorage();
 const singleFileUpload = multer({ storage: inMemoryStorage });
-const aubio = require('aubiojs');
 
 const PORT = process.env.PORT;
 
@@ -58,6 +57,7 @@ rootRoute1.get("/userProductBidding", async (req, res) => {
 rootRoute1.post('/userProductBidding', async (req, res) => {
   const payload = req.body.userProductBidding;
   const { userName, productId, biddingAmount } = payload;
+  const wallets = await Wallets.find({ userName }).sort({ amount: -1 });
   if(!userName || !productId || !biddingAmount) {
     return AppResponse.badRequest(
       res,
@@ -93,7 +93,6 @@ rootRoute1.post('/userProductBidding', async (req, res) => {
     )
   }
 // TODO:
-const wallets = await Wallets.find({ userName }).sort({ amount: -1 });
 if (productBidding.length && wallets.length && productBidding[0].biddingAmount >= wallets[0].amount) {
   return AppResponse.badRequest(
     res,
