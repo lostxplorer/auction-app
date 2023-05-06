@@ -1,0 +1,7 @@
+.coconut-cards{
+    display: grid;
+    height: auto;
+    margin: 10px;
+    gap: 5px;
+    border-radius: 5px;
+}

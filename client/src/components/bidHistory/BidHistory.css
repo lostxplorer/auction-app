@@ -1,0 +1,16 @@
+ul .list-group-item:nth-child(2) {
+    color: #000;  
+    font-weight: bold !important; 
+    animation: glow 1s ease-in-out infinite alternate;
+    }
+
+@keyframes glow {
+    to {
+        text-shadow: 0 0 10px rgb(124, 60, 212);
+    }
+}
+
+.bid-history-header {
+    text-transform: uppercase;
+    font-weight: bold !important;
+}
